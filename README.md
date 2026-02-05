@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rick & Morty Squad Maker
+
+A small Next.js app that consumes the public Rick & Morty API and lets users build their own squad of characters.
+
+## Features
+- **SSR-first list (App Router):** initial characters are rendered from the server for better SEO.
+- **Search by name:** filter characters using the API.
+- **Pagination:** navigate through results.
+- **Squad management (Zustand):** add/remove characters from a global store.
+- **Persistence:** squad survives page reloads (F5) via persisted state.
+- **Character details routing:** `/character/[id]` shows detailed info (status, species, origin, etc.).
+- **Responsive UI:** Tailwind grid layout for mobile and desktop.
+
+## Tech Stack
+- Next.js (App Router)
+- React
+- TypeScript (strict mode, no `any`)
+- Tailwind CSS
+- Zustand
+
+## Requirements
+- **Node.js:** `v24.11.0` (recommended)
+- **npm:** `v11.6.1`
 
 ## Getting Started
 
-First, run the development server:
-
+### 1) Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/CastriDani/try_rick_and_morty_squad_maker.git
+cd rick-morty-squad-maker
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2) Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3) Run the development server
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4) Open your browser
+Navigate to [http://localhost:3000](http://localhost:3000) to see the application.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+rick-morty-squad-maker/
+├── src/
+│   ├── app/
+│   │   ├── components/        # React components
+│   │   │   ├── character.tsx
+│   │   │   ├── characterList.tsx
+│   │   │   ├── NavPage.tsx
+│   │   │   ├── SearchInput.tsx
+│   │   │   └── Squad.tsx
+│   │   ├── store/            # Zustand state management
+│   │   │   └── favoriteStore.ts
+│   │   ├── types/            # TypeScript interfaces
+│   │   │   └── character.ts
+│   │   ├── character/[id]/   # Dynamic route for character details
+│   │   │   └── page.tsx
+│   │   ├── App.tsx           # Main app component
+│   │   ├── layout.tsx        # Root layout
+│   │   ├── page.tsx          # Home page
+│   │   └── globals.css       # Global styles
+│   └── public/               # Static assets
+├── next.config.ts            # Next.js configuration
+├── tsconfig.json             # TypeScript configuration
+├── tailwind.config.ts        # Tailwind CSS configuration
+└── package.json              # Project dependencies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
